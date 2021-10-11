@@ -5,17 +5,17 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('experiences');
+      return User.find().populate('event');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('experiences');
+      return User.findOne({ username }).populate('events');
     },
     events: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Event.find(params).sort({ createdAt: -1 });
     },
-    event: async (parent, { thoughtId }) => {
-      return Event.findOne({ _id: thoughtId });
+    event: async (parent, { eventId }) => {
+      return Event.findOne({ _id: eventId });
     },
     me: async (parent, args, context) => {
       if (context.user) {

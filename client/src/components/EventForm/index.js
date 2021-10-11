@@ -6,9 +6,9 @@ import { QUERY_EVENTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const EventForm = () => {
-//   const [eventText, setEventText] = useState('');
+  const [eventText, setEventText] = useState('');
 
-//   const [characterCount, setCharacterCount] = useState(0);
+   const [characterCount, setCharacterCount] = useState(0);
 
   // const [addThought, { error }] = useMutation(ADD_THOUGHT, {
   //   update(cache, { data: { addThought } }) {
@@ -32,41 +32,42 @@ const EventForm = () => {
   //   },
   // });
 
-//   const handleFormSubmit = async (event) => {
-//     event.preventDefault();
+   const handleFormSubmit = async (event) => {
+     event.preventDefault();
 
-//     try {
-//       const { data } = await addThought({
-//         variables: {
-//           thoughtText,
-//           thoughtAuthor: Auth.getProfile().data.username,
-//         },
-//       });
+    // try {
+    //    const { data } = await addThought({
+    //      variables: {
+    //        eventText,
+    //        eventTitle: Auth.getProfile().data.username,
+    //      },
+    //    });
 
-//       setThoughtText('');
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
+    //   setThoughtText('');
+    //  } catch (err) {
+    //    console.error(err);
+    //  }
+   };
 
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
+  const handleChange = (event) => {
+     const { name, value } = event.target;
 
-//     if (name === 'thoughtText' && value.length <= 280) {
-//       setThoughtText(value);
-//       setCharacterCount(value.length);
-//     }
-//   };
+    if (name === 'eventText' && value.length <= 280) {
+     setEventText(value);
+       setCharacterCount(value.length);
+     }
+   };
 
   return (
     <div>
       <h3>Do you have experience and you would like to share it?</h3>
-{/* 
+
       {Auth.loggedIn() ? (
         <>
           <p
             className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
+               characterCount === 280 
+              //  || error ? 'text-danger' : ''
             }`}
           >
             Character Count: {characterCount}/280
@@ -77,9 +78,9 @@ const EventForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="thoughtText"
+                name="eventText"
                 placeholder="Here's a new thought..."
-                value={thoughtText}
+                value={eventText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -91,11 +92,11 @@ const EventForm = () => {
                 Add Event
               </button>
             </div>
-            {error && (
+            {/* {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}
               </div>
-            )}
+            )} */}
           </form>
         </>
       ) : (
@@ -104,7 +105,7 @@ const EventForm = () => {
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
-       */}
+       
     </div>
   ); 
   

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import { QUERY_ME } from '../utils/queries';
 
 const EventList = ({
   events,
@@ -7,9 +8,14 @@ const EventList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!events.length) {
+  // if (!events.length) {
+  if (!events) {
     return <h3>No events Yet</h3>;
   }
+
+// const {loading, data } = useQuery(useParam? QUERY_ME, {
+//   variables: {username: userParam}
+// })
 
   return (
     <div>
