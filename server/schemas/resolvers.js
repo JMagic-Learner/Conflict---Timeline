@@ -49,17 +49,17 @@ const resolvers = {
       return { token, user };
     },
 
-  //  saveEvent: async (parent, { eventId }, context) => {
-  //     if (context.user) {
-  //        const updatedUser = await User.findOneAndUpdate(
-  //             {_id: context.user._id },
-  //             { $addToSet: {events: event.eventId }},
-  //             { new: true} );
+   saveEvent: async (parent, { eventId,  }, context) => {
+      if (context.user) {
+         const updatedUser = await User.findOneAndUpdate(
+              {_id: context.user._id },
+              { $addToSet: {user: User.events.eventId }},
+              { new: true} );
 
-  //           return updatedUser;
-  //        }
-  //        throw new AuthenticationError("You are not logged");
-  //       },
+            return updatedUser;
+         }
+         throw new AuthenticationError("You are not logged");
+        },
     
     
     addComment: async (parent, { eventId, commentText }, context) => {

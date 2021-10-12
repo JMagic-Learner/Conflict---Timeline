@@ -24,15 +24,13 @@ export const ADD_USER = gql`
   }
 `;
 
-// export const SAVE_EVENT = gql`
-//   mutation saveEvent($eventId: ID!) {
-//     saveEvent(eventId: $ID) {
-//       _id
-//       eventText
-//       eventTitle
-//     }
-//   }
-// `;
+export const SAVE_EVENT = gql`
+  mutation saveEvent($eventId: ID!) {
+    saveEvent(eventId: $eventId) {
+      _id
+    }
+  }
+`;
 
 export const ADD_COMMENT = gql`
   mutation addComment($eventId: ID!, $commentText: String!) {
