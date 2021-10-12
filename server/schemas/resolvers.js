@@ -61,20 +61,7 @@ const resolvers = {
   //        throw new AuthenticationError("You are not logged");
   //       },
     
-    // create({
-    //       eventText,
-    //       eventTitle: context.user.username,
-    //     });
-
-    //     await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { thoughts: thought._id } }
-    //     );
-
-    //     return thought;
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+    
     addComment: async (parent, { eventId, commentText }, context) => {
       if (context.user) {
         return Event.findOneAndUpdate(

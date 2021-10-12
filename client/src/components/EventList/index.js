@@ -18,7 +18,7 @@ const EventList = ({
 // })
 
   return (
-    <div>
+    <div idName="app">
       <div className="timeline-container">
         
       {showTitle && <h3>{title}</h3>}
@@ -26,7 +26,7 @@ const EventList = ({
         events.map((event) => (
           <div className='timeline-item'>
           <div className="timeline-item-content">
-          <div key={event._id} className="card mb-3">
+          <div key={event._id} className="">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
                 <Link

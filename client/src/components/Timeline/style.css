@@ -28,6 +28,7 @@ h1 {
     flex-direction: column;
     position: relative;
     margin: 40px 0;
+    width:1000px;
 }
 
 .timeline-container::after {
@@ -64,8 +65,8 @@ h1 {
     align-items: flex-end;
     padding: 15px;
     position: relative;
-    width: 400px;
-    max-width: 70%;
+    width: 200%;
+    margin:auto;
     text-align: right;
 }
 
