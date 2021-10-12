@@ -23,6 +23,9 @@ const Header = () => {
               <Link className="btn btn-lg btn-info m-2" to="/me">
                 {Auth.getProfile().data.username}'s profile
               </Link>
+              <Link className="btn btn-lg btn-info m-2" to="/search">
+                WikiSearch
+              </Link>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
               </button>
@@ -31,6 +34,9 @@ const Header = () => {
             <>
               <Link className="btn btn-lg btn-info m-2" to="/login">
                 Login
+              </Link>
+              <Link className="btn btn-lg btn-info m-2" to="/search">
+                WikiSearch
               </Link>
               <Link className="btn btn-lg btn-light m-2" to="/signup">
                 Signup

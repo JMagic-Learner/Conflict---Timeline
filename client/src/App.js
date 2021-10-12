@@ -15,6 +15,7 @@ import SingleEvent from './pages/SingleEvent';
 import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Wiki from './components/SearchForm/Wiki';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -55,6 +56,9 @@ function App() {
             </Route>
             <Route exact path="/signup">
               <Signup />
+            </Route>
+            <Route exact path="/search">
+              <Wiki />
             </Route>
             <Route exact path="/me">
               <Profile />
