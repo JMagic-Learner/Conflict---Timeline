@@ -48,7 +48,8 @@ const resolvers = {
 
       return { token, user };
     },
-
+    //{"authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiSGlzdG9yaWFuQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiSGlzdG9yaWFuIiwiX2lkIjoiNjE2MzhhZDM3OGM4NDczYzgwNWE4OWU4In0sImlhdCI6MTYzNDAxNDcxNCwiZXhwIjoxNjM0MDIxOTE0fQ.3jWn6OU47-jD0Yhccc6T9NzfRKDMNiO8KGC9DXQ9hyY"}
+    // {"email": "Historian@gmail.com", "password": "Historian123", "eventId": "61638a5ab67461588c209597" }
    saveEvent: async (parent, { eventId,  }, context) => {
       if (context.user) {
          const updatedUser = await User.findOneAndUpdate(
