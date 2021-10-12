@@ -49,11 +49,11 @@ const resolvers = {
       return { token, user };
     },
 
-  //  saveEvent: async (parent, { eventText }, context) => {
+  //  saveEvent: async (parent, { eventId }, context) => {
   //     if (context.user) {
   //        const updatedUser = await User.findOneAndUpdate(
   //             {_id: context.user._id },
-  //             { $addToSet: {events: args.input }},
+  //             { $addToSet: {events: event.eventId }},
   //             { new: true} );
 
   //           return updatedUser;
