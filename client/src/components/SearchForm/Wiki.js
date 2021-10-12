@@ -31,7 +31,7 @@ export default function Wiki() {
             // console.log(json);
             console.log("We have a response");
             setResults(json.query.search);
-            setSearchInfo(json.query.searchInfo);
+            setSearchInfo(json.query.searchinfo);
 
         // } catch (err) {
         //     console.error(err);
@@ -53,7 +53,7 @@ export default function Wiki() {
                         onChange={e => setSearch(e.target.value)}
                     />
                 </form>
-                {(searchInfo) ? <p> Search Results : {searchInfo.totalhits}</p> : ''}
+                {(searchInfo.totalhits) ? <p> Search Results : {searchInfo.totalhits}</p> : ''}
             </header>
             <div className="results">
                 {results.map((result, i) => {
