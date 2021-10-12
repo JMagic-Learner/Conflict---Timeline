@@ -5,6 +5,7 @@ import EventList from '../components/EventList';
 import EventForm from '../components/EventForm';
 import Wiki from '../components/SearchForm/Wiki';
 import Introduction from '../components/Introduction';
+import Timeline from '../components/Timeline';
 
 import { QUERY_EVENTS } from '../utils/queries';
 
@@ -21,6 +22,7 @@ const Home = () => {
         >
            <p>This is where the "EvenForm" was located previously</p> 
            <Introduction />
+           <Timeline />
            {/* <EventForm />  */}
         </div>
         {/* <div

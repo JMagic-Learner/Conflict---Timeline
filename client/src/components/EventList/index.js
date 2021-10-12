@@ -19,9 +19,13 @@ const EventList = ({
 
   return (
     <div>
+      <div className="timeline-container">
+        
       {showTitle && <h3>{title}</h3>}
       {events &&
         events.map((event) => (
+          <div className='timeline-item'>
+          <div className="timeline-item-content">
           <div key={event._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
@@ -33,6 +37,7 @@ const EventList = ({
                   <span style={{ fontSize: '1rem' }}>
                     had this event on {event.createdAt}
                   </span>
+                  <span className="circle" />
                 </Link>
               ) : (
                 <>
@@ -48,9 +53,14 @@ const EventList = ({
               to={`/events/${event._id}`}
             >
               Join the discussion on this event.
+              <span className="circle" />
             </Link>
           </div>
+          </div>
+          </div>
         ))}
+        
+    </div> 
     </div>
   );
 };
