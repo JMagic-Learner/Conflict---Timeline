@@ -48,9 +48,20 @@ const resolvers = {
 
       return { token, user };
     },
-    // addEvent: async (parent, { eventText }, context) => {
-    //   if (context.user) {
-    //     const event = await Event.create({
+
+  //  saveEvent: async (parent, { eventText }, context) => {
+  //     if (context.user) {
+  //        const updatedUser = await User.findOneAndUpdate(
+  //             {_id: context.user._id },
+  //             { $addToSet: {events: args.input }},
+  //             { new: true} );
+
+  //           return updatedUser;
+  //        }
+  //        throw new AuthenticationError("You are not logged");
+  //       },
+    
+    // create({
     //       eventText,
     //       eventTitle: context.user.username,
     //     });

@@ -24,9 +24,9 @@ export const ADD_USER = gql`
   }
 `;
 
-// export const ADD_THOUGHT = gql`
-//   mutation addThought($thoughtText: String!) {
-//     addThought(thoughtText: $thoughtText) {
+// export const ADD_EVENT = gql`
+//   mutation addEVENT($eventId: String!) {
+//     addEvent(eventText: $eventText) {
 //       _id
 //       thoughtText
 //       thoughtAuthor
