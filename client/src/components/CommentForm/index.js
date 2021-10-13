@@ -23,7 +23,8 @@ const CommentForm = ({ eventId }) => {
           commentAuthor: Auth.getProfile().data.username,
         },
       });
-
+// Run Save events here
+// have a btn to save event on the home page 
       setCommentText('');
     } catch (err) {
       console.error(err);

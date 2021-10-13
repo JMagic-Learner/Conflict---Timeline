@@ -31,7 +31,7 @@ export const SAVE_EVENT = gql`
     }
   }
 `;
-
+// Right after the user add comments save events to the user
 export const ADD_COMMENT = gql`
   mutation addComment($eventId: ID!, $commentText: String!) {
     addComment(eventId: $eventId, commentText: $commentText) {
