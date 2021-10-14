@@ -1,0 +1,24 @@
+export const saveEventIds = (eventIdArr) => {
+  if (eventIdArr.length) {
+    localStorage.setItem('saved_eventId', JSON.stringify(eventIdArr));
+  } else {
+    localStorage.removeItem('saved_eventId');
+  }
+};
+
+
+
+export const removeEventId = (eventId) => {
+  const savedEventIds = localStorage.getItem('saved_eventId')
+    ? JSON.parse(localStorage.getItem('saved_eventId'))
+    : null;
+
+  if (!savedEventIds) {
+    return false;
+  }
+
+  const updatedSavedEventIds = savedEventIds?.filter((savedEventId) => savedEventId !== eventId);
+  localStorage.setItem('saved_eventId', JSON.stringify(updatedSavedEventIds));
+
+  return true;
+};
