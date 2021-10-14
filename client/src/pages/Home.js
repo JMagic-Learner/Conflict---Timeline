@@ -11,7 +11,38 @@ import { QUERY_EVENTS } from '../utils/queries';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_EVENTS);
-  const events = data?.events || [];
+  // const events will hold the event _ID
+  const events = data?.events._id || [];
+
+  const handleEventSave = async (eventId) => {
+    // find the book in `searchedBooks` state by the matching id
+    const eventToSave = searchedBooks.find((book) => book.bookId === bookId);
+
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const response = await saveBook({
+        variables: {
+          input: bookToSave,
+        },
+      });
+
+      if (!response) {
+        throw new Error("something went wrong!");
+      }
+
+      // if book successfully saves to user's account, save book id to state
+      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
 
   return (
     <main>
