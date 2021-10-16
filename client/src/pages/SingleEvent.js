@@ -27,14 +27,7 @@ const SingleEvent = () => {
           window.location.reload();
       }, }
   );
-const TestingOnDelete = (commentId, eventId) => {
-  console.log("we Have clicked the delete button");
-  onDelete (commentId, eventId);
-}
-  // This function will handle deleting the comment.
-const onDelete = (commentId , eventId) => removeComment(
-  { variables: { commentId: commentId, eventId: eventId } }
-);
+
   
   const event = data?.event || {};
   const commentArray = event.comments;
@@ -42,7 +35,14 @@ const onDelete = (commentId , eventId) => removeComment(
   console.log("the eventText that will be populated as the description:++ " + event.eventText);
   console.log("the eventTitle that will be the conflict name:++ " + event.eventTitle);
  
-
+  const TestingOnDelete = (commentId, eventId) => {
+    console.log("we Have clicked the delete button");
+    onDelete (commentId, eventId);
+  }
+    // This function will handle deleting the comment.
+  const onDelete = (commentId , eventId) => removeComment(
+    { variables: { commentId: commentId, eventId: eventId } }
+  );
 
   if (loading) {
     return <div>Loading...</div>;
@@ -97,7 +97,7 @@ const onDelete = (commentId , eventId) => removeComment(
                <button className="btn btn-primary btn-block py-3" type="submit" >
                                 Edit Comment
                             </button>
-                            <button className="btn btn-primary btn-block py-3" type="submit" onDelete={TestingOnDelete} >
+                            <button className="btn btn-primary btn-block py-3" type="submit" onClick={onDelete} >
                                 Delete Comment
                             </button> 
             </div>
