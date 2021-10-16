@@ -80,10 +80,10 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    editEventComment: async (parent, { commentId, commentText }, context) => {
+    editEventComment: async (parent, { eventId, commentId, commentText }, context) => {
       if (context.user) {
-        return Comment.findOneAndUpdate(
-          { _id: commentId },
+        return Event.findOneAndUpdate(
+          { _id: eventId },
           {
             $addToSet: {
               comments: { commentText, commentAuthor: context.user.username },
@@ -139,7 +139,7 @@ const resolvers = {
             $pull: {
               comments: {
                 _id: commentId,
-                commentAuthor: context.user.username,
+                // commentAuthor: context.user.username,
               },
             },
           },

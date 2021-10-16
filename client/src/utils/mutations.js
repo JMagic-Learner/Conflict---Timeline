@@ -57,9 +57,8 @@ export const EDIT_COMMENT = gql`
 `
 export const REMOVE_COMMENT = gql`
   mutation removeComment($eventId: ID!, $commentId: ID!) {
-    removeComment(eventId: $eventID, commentId: $commentId) {
+    removeComment(eventId: $eventId, commentId: $commentId) {
      _id
-     commentText
     }
   }
 `
