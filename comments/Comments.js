@@ -8,6 +8,15 @@ import Comment from "./Comment";
 //   deleteComment as deleteCommentApi,
 // } from "../api";
 
+
+// Importing premade data.
+// Comments.js is the component that will be rendered into SingleEvent.js
+// HIERARCHY TABLE:
+// EXPORT TOP: Comments.js
+// IMPORTING INTO TOP: Comment.js
+// IMPORTING INTO MIDDLE: CommentForm.js ---> Comment.js
+
+
 const Comments = ({ commentsUrl, currentUserId }) => {
   const [backendComments, setBackendComments] = useState([]);
   const [activeComment, setActiveComment] = useState(null);
