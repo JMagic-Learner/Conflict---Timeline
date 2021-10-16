@@ -41,8 +41,11 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     saveEvent(eventId: ID!): User
     addComment(eventId: ID!, commentText: String!): Event
+    editEventComment(commentId: String, commentText: String): Event
+    deleteEventComment(commentId: String): Event
+
     # removeEvent(eventId: ID!): Event
-    removeComment(eventId: ID!, commentId: ID!): Event
+    # removeComment(eventId: ID!, commentId: ID!): Event
   }
 `;
 

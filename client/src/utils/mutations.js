@@ -46,3 +46,21 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+export const EDIT_COMMENT = gql`
+  mutation editEventComment($commentId: ID!, $commentText: String!) {
+    editEventComment(_id: $commentId, commentText: $commentText) {
+      _id
+      commentText
+
+    }
+  }
+`
+export const DELETE_COMMENT = gql`
+  mutation deleteEventComment($commentId: ID!) {
+    deleteEventComment(commentId: $commentId, commentText: $commentText) {
+     _id
+     commentText
+
+    }
+  }
+`
