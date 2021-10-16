@@ -1,0 +1,3 @@
+--host historian-shard-00-01.mwclh.mongodb.net:27017 --db myFirstDatabase --collection events --type json --file C:\Users\majas\Desktop\Conflict---Timeline\server\seeders\eventseeds.json --jsonArray --authenticationDatabase admin --ssl --username Historian --password Historian123
+
+--host historian-shard-00-01.mwclh.mongodb.net:27017 --db myFirstDatabase --collection users --type json --file C:\Users\majas\Desktop\Conflict---Timeline\server\seeders\userseeds.json --jsonArray --authenticationDatabase admin --ssl --username Historian --password Historian123
