@@ -55,12 +55,11 @@ export const EDIT_COMMENT = gql`
     }
   }
 `
-export const DELETE_COMMENT = gql`
-  mutation deleteEventComment($commentId: ID!) {
-    deleteEventComment(commentId: $commentId, commentText: $commentText) {
+export const REMOVE_COMMENT = gql`
+  mutation removeComment($eventId: ID!, $commentId: ID!) {
+    removeComment(eventId: $eventID, commentId: $commentId) {
      _id
      commentText
-
     }
   }
 `

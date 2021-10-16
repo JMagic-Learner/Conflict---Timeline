@@ -97,22 +97,22 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    deleteEventComment: async (parent, { commentId }, context) => {
-      if (context.user) {
-        return Event.findOneAndUpdate(
-          { _id: commentId },
-          {
-            $pull: {
-              comments: { commentId: commentId },
-            },
-          },
-          {
-            new: true,
-          }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    // deleteEventComment: async (parent, { commentId }, context) => {
+    //   if (context.user) {
+    //     return Event.findOneAndUpdate(
+    //       { _id: commentId },
+    //       {
+    //         $pull: {
+    //           comments: { commentId: commentId },
+    //         },
+    //       },
+    //       {
+    //         new: true,
+    //       }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
     
 
     // removeThought: async (parent, { eventId }, context) => {
@@ -131,23 +131,23 @@ const resolvers = {
     //   }
     //   throw new AuthenticationError('You need to be logged in!');
     // },
-    // removeComment: async (parent, { eventId, commentId }, context) => {
-    //   if (context.user) {
-    //     return Event.findOneAndUpdate(
-    //       { _id: eventId },
-    //       {
-    //         $pull: {
-    //           comments: {
-    //             _id: commentId,
-    //             commentAuthor: context.user.username,
-    //           },
-    //         },
-    //       },
-    //       { new: true }
-    //     );
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+    removeComment: async (parent, { eventId, commentId }, context) => {
+      if (context.user) {
+        return Event.findOneAndUpdate(
+          { _id: eventId },
+          {
+            $pull: {
+              comments: {
+                _id: commentId,
+                commentAuthor: context.user.username,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 
