@@ -1,7 +1,7 @@
 {
   "name": "the-historian",
   "version": "1.0.0",
-  "description": "",
+  "description": "- The historian is an app that takes you back in time to shift across time periods and learn about their most significant events and conflicts that shaped our modern life. - This application will host and describe various conflicts that occured during the 20th. We hope to inform later generations of little-known wars. In addition, this application will allow user/survivor/veteran input to help \"narrate\" the timeline.",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
@@ -24,5 +24,13 @@
     "@mui/styled-engine-sc": "^5.0.3",
     "react-bootstrap": "^1.6.4",
     "styled-components": "^5.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMagic-Learner/Conflict---Timeline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JMagic-Learner/Conflict---Timeline/issues"
+  },
+  "homepage": "https://github.com/JMagic-Learner/Conflict---Timeline#readme"
 }
