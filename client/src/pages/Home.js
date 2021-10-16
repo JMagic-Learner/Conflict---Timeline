@@ -5,7 +5,7 @@ import EventList from '../components/EventList';
 import EventForm from '../components/EventForm';
 import Wiki from '../components/SearchForm/Wiki';
 import Introduction from '../components/Introduction';
-import Timeline from '../components/Timeline';
+import TimeLine from '../components/Timeline';
 
 import { QUERY_EVENTS } from '../utils/queries';
 
@@ -20,10 +20,10 @@ const Home = () => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: '1px dotted #1a1a1a' }}
         >
-           <p>This is where the "EvenForm" was located previously</p> 
-           <Introduction />
-           <Timeline />
-           {/* <EventForm />  */}
+          <p>This is where the "EvenForm" was located previously</p>
+          <Introduction />
+          {/* <TimeLine events={events} /> */}
+          {/* <EventForm />  */}
         </div>
         {/* <div
           className="col-12 col-md-10 mb-3 p-3"
@@ -31,14 +31,15 @@ const Home = () => {
         >
            <Wiki /> 
         </div> */}
-        <div className="col-12 col-md-8 mb-3">
+        <div className="col-12 col-lg-12 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <EventList
-              events={events}
-              title="Need Events"
-            />
+            // <EventList
+            //   events={events}
+            //   title="Need Events"
+            // />
+            <TimeLine events={events} />
           )}
         </div>
       </div>
