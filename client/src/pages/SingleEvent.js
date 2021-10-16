@@ -10,6 +10,7 @@ import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_EVENT } from '../utils/queries';
 import { REMOVE_COMMENT } from '../utils/mutations';
+import { SAVE_EVENT } from '../utils/mutations';
 
 
 
@@ -29,6 +30,10 @@ const SingleEvent = () => {
           window.location.reload();
       }, }
   );
+
+  const [saveEvent] = useMutation(SAVE_EVENT);
+
+
 
   
   const event = data?.event || {};
@@ -113,7 +118,15 @@ function intermediarTest (commentId) {
           }}
         >
           {event.eventText}
+        
         </blockquote>
+        
+      </div>
+      <div className="card-header bg-dark text-light p-2 m-0">
+      <button className="btn btn-primary btn-block py-3" type="submit" >
+                               Save this event!
+                            </button> 
+      
       </div>
 
       <div className="my-5">

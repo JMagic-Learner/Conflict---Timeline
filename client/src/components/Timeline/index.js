@@ -1,117 +1,77 @@
 import React from 'react';
+import { ReactComponent as WorkIcon } from "./work.svg";
+import { ReactComponent as SchoolIcon } from "./school.svg";
+import timelineElements from "./timelineElements";
 import { Link } from 'react-router-dom';
-// import data from './data.js';
 
-import "./style.css";
+import {
+    VerticalTimeline,
+    VerticalTimelineElement,
+} from "react-vertical-timeline-component";
 
-const Timeline = () => {
+import "react-vertical-timeline-component/style.min.css";
 
-    const timelineData = [
-        {
-            text: 'Started working on the app-ideas repository',
-            date: 'February 25 2019',
-            category: {
-                tag: 'app-ideas',
-                color: '#FFDB14'
-            },
-            link: {
-                url: 'https://github.com/florinpop17/app-ideas',
-                text: 'Check it out on GitHub'
-            }
-        },
-        {
-            text: 'Started the Weekly Coding Challenge program',
-            date: 'March 04 2019',
-            category: {
-                tag: 'blog',
-                color: '#e17b77'
-            },
-            link: {
-                url: 'https://florin-pop/blog/2019/03/weekly-coding-challenge/',
-                text: 'Check it out here'
-            }
-        },
-        {
-            text: 'Got 1.000 followers on Twitter',
-            date: 'March 07 2019',
-            category: {
-                tag: 'twitter',
-                color: '#1DA1F2'
-            },
-            link: {
-                url: 'https://twitter.com/florinpop1705',
-                text: 'See profile'
-            }
-        },
-        {
-            text:
-                'I published my first article in the FreeCodeCamp Medium Publication',
-            date: 'March 18 2019',
-            category: {
-                tag: 'medium',
-                color: '#018f69'
-            },
-            link: {
-                url:
-                    'https://medium.freecodecamp.org/how-to-build-a-double-slider-sign-in-and-sign-up-form-6a5d03612a34',
-                text: 'Check it out here'
-            }
-        },
-        {
-            text: 'Over 12.000 views in a single day on my Medium posts',
-            date: 'April 05 2019',
-            category: {
-                tag: 'medium',
-                color: '#018f69'
-            },
-            link: {
-                url: 'https://medium.com/@popflorin1705',
-                text: 'See profile'
-            }
-        }
-    ]
-    
-    const TimelineItem = ({ data }) => (
-        <div className="timeline-item">
-            <div className="timeline-item-content">
-                <span className="tag" style={{ background: data.category.color }}>
-                    {data.category.tag}
-                </span>
-                <time>{data.date}</time>
-                <p>{data.text}</p>
-                {data.link && (
-                    <a
-                        href={data.link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {data.link.text}
-                    </a>
-                )}
-                <span className="circle" />
-            </div>
-        </div>
-    );
-    
-    const TimelineFunction = () =>
-        timelineData.length > 0 && (
-            <div className="timeline-container">
-                {timelineData.map((data, idx) => (
-                    <TimelineItem data={data} key={idx} />
-                ))}
-            </div>
-        );
-
+function TimeLine({ events,
+    title,
+    showTitle = true,
+    showUsername = true}) {
+    let workIconStyles = { background: "#06D6A0" };
+    let schoolIconStyles = { background: "#f9c74f" };
 
     return (
         <div>
-            {/* <footer>
-                <p>
-                    Created with <i class="fa fa-heart"></i> by
-                </p>
-            </footer> */}
+            <h1 className="title">Timeline</h1>
+            <VerticalTimeline>
+                {events.map((element) => {
+                    let isWorkIcon = element.icon === "work";
+                    let showButton =
+                        element.buttonText !== undefined &&
+                        element.buttonText !== null &&
+                        element.buttonText !== "";
+
+                    return (
+                        <VerticalTimelineElement
+                            key={element.key}
+                            date={element.date}
+                            dateClassName="date"
+                            iconStyle={isWorkIcon ? workIconStyles : schoolIconStyles}
+                            icon={isWorkIcon ? <WorkIcon /> : <SchoolIcon />}
+                        >
+                            <h3 className="vertical-timeline-element-title">
+                                <Link
+                                    className="text-light"
+                                    to={`/profiles/${element.eventTitle}`}
+                                >
+                                    {element.eventTitle}
+
+                                </Link>
+                            </h3>
+                            <h5 className="vertical-timeline-element-subtitle">
+                                {/* {element.location} */}
+                            </h5>
+                            <p id="description">{element.eventText}</p>
+                            <Link
+                                className="btn btn-primary btn-block btn-squared"
+                                to={`/events/${element._id}`}
+                            >
+                                Join the discussion on this event.
+                                <span className="circle" />
+                            </Link>
+                            {showButton && (
+                                <a
+                                    className={`button ${isWorkIcon ? "workButton" : "schoolButton"
+                                        }`}
+                                    href="/"
+                                >
+                                    {element.buttonText}
+                                </a>
+                            )}
+                        </VerticalTimelineElement>
+                    );
+                })}
+            </VerticalTimeline>
         </div>
     );
-};
+}
 
-export default Timeline;
+export default TimeLine;
