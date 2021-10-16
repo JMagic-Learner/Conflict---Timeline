@@ -105,14 +105,11 @@ const Timeline = () => {
 
     return (
         <div>
-            <footer>
+            {/* <footer>
                 <p>
                     Created with <i class="fa fa-heart"></i> by
-                    <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-                    - Read about how I created this on my
-                    <a target="_blank" href="https://www.florin-pop.com/blog/2019/04/how-to-create-a-timeline-with-react/">blog</a>
                 </p>
-            </footer>
+            </footer> */}
         </div>
     );
 };

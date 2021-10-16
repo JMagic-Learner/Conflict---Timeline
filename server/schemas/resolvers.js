@@ -80,6 +80,41 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    editEventComment: async (parent, { eventId, commentId, commentText }, context) => {
+      if (context.user) {
+        return Event.findOneAndUpdate(
+          { _id: eventId },
+          {
+            $addToSet: {
+              comments: { commentText, commentAuthor: context.user.username },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    // deleteEventComment: async (parent, { commentId }, context) => {
+    //   if (context.user) {
+    //     return Event.findOneAndUpdate(
+    //       { _id: commentId },
+    //       {
+    //         $pull: {
+    //           comments: { commentId: commentId },
+    //         },
+    //       },
+    //       {
+    //         new: true,
+    //       }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+    
+
     // removeThought: async (parent, { eventId }, context) => {
     //   if (context.user) {
     //     const event = await Event.findOneAndDelete({
@@ -104,7 +139,7 @@ const resolvers = {
             $pull: {
               comments: {
                 _id: commentId,
-                commentAuthor: context.user.username,
+                // commentAuthor: context.user.username,
               },
             },
           },
