@@ -17,21 +17,21 @@ export default function Wiki() {
         if (search === '') return;
 
         // try {
-            const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${search}`;
+        const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${search}`;
 
-            const response = await fetch(endpoint);
-            console.log(response);
-            console.log(response.ok);
-            if (!response.ok) {
-                console.log('There is no response');
-                throw Error(response.statusText);
-            }
+        const response = await fetch(endpoint);
+        console.log(response);
+        console.log(response.ok);
+        if (!response.ok) {
+            console.log('There is no response');
+            throw Error(response.statusText);
+        }
 
-            const json = await response.json();
-            // console.log(json);
-            console.log("We have a response");
-            setResults(json.query.search);
-            setSearchInfo(json.query.searchinfo);
+        const json = await response.json();
+        // console.log(json);
+        console.log("We have a response");
+        setResults(json.query.search);
+        setSearchInfo(json.query.searchinfo);
 
         // } catch (err) {
         //     console.error(err);
@@ -40,7 +40,7 @@ export default function Wiki() {
 
     return (
         <div className="search-wiki">
-            <header>
+            <div className="search-body">
                 {/* <Link className="btn btn-lg btn-light m-2" to="/search">
                     Search WIKI
                 </Link> */}
@@ -54,7 +54,7 @@ export default function Wiki() {
                     />
                 </form>
                 {(searchInfo.totalhits) ? <p> Search Results : {searchInfo.totalhits}</p> : ''}
-            </header>
+            </div>
             <div className="results">
                 {results.map((result, i) => {
                     const url = `https://en.wikipedia.org/?curid=${result.pageid}`;

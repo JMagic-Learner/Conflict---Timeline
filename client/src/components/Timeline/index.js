@@ -14,14 +14,14 @@ import "react-vertical-timeline-component/style.min.css";
 function TimeLine({ events,
     title,
     showTitle = true,
-    showUsername = true}) {
+    showUsername = true }) {
     let workIconStyles = { background: "#06D6A0" };
     let schoolIconStyles = { background: "#f9c74f" };
 
     return (
         <div>
             <h1 className="title">Timeline</h1>
-            <VerticalTimeline>
+            <VerticalTimeline >
                 {events.map((element) => {
                     let isWorkIcon = element.icon === "work";
                     let showButton =
@@ -75,3 +75,13 @@ function TimeLine({ events,
 }
 
 export default TimeLine;
+{/* <Link
+    className={styles.link}
+    color="textPrimary"
+    variant="button"
+    underline="none"
+    href="/me"
+// key={item.name}
+>
+    {Auth.getProfile().data.username}'s profile
+</Link> */}

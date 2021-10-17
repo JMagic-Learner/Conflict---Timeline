@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "@material-ui/core/Link";
+import Auth from '../../utils/auth';
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import ToolBar from "@material-ui/core/ToolBar";
@@ -12,14 +13,19 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Divider from "@material-ui/core/Divider";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import List from "@material-ui/core/List";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+
+
 import ListItem from "@material-ui/core/ListItem";
 
 import Auth from '../../utils/auth';
 const navigationLinks = [
     { name: "The Historian", href: "/" },
     { name: "Profile", href: "/me" },
-    { name: "Login", href: "/login" },
     { name: "WikiSearch", href: "/search" },
+    { name: "Logout", href: "/logout" },
+    { name: "Login", href: "/login" },
     { name: "Signup", href: "/signup" },
     // { name: "", href: "/" },
 ];
@@ -49,22 +55,80 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     return (
         <AppBar position="sticky" color="default">
+            {/* start of my nav bar */}
             <Container maxWidth="md">
                 <ToolBar disableGutters>
                     <Avatar className={styles.avatar}>P</Avatar>
                     <Hidden xsDown>
-                        {navigationLinks.map((item) => (
-                            <Link
-                                className={styles.link}
-                                color="textPrimary"
-                                variant="button"
-                                underline="none"
-                                href={item.href}
-                                key={item.name}
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
+                        {Auth.loggedIn() ? (
+                            <>
+                                <Link
+                                    className={styles.link}
+                                    color="textPrimary"
+                                    variant="button"
+                                    underline="none"
+                                    href="/me"
+                                    key={item.name}
+                                >
+                                    {Auth.getProfile().data.username}'s profile
+                                </Link>
+                                <Link
+                                    className={styles.link}
+                                    color="textPrimary"
+                                    variant="button"
+                                    underline="none"
+                                    href="/search"
+                                    key={item.name}
+                                >
+                                    WikiSearch
+                                </Link>
+
+                                <Box my={2}>
+                                    <Button
+                                        onClick={logout}
+                                        variant="outlined"
+                                        color="secondary"
+                                    >
+                                        Logout
+                                    </Button>
+                                </Box>
+                            </>
+                        ) : (
+                            <>
+                                <Link
+                                    className={styles.link}
+                                    color="textPrimary"
+                                    variant="button"
+                                    underline="none"
+                                    href="/login"
+                                    key={item.name}
+                                >
+                                    Login
+                                </Link>
+
+                                <Link
+                                    className={styles.link}
+                                    color="textPrimary"
+                                    variant="button"
+                                    underline="none"
+                                    href="/search"
+                                    key={item.name}
+                                >
+                                    WikiSearch
+                                </Link>
+                                <Link
+                                    className={styles.link}
+                                    color="textPrimary"
+                                    variant="button"
+                                    underline="none"
+                                    href="/signup"
+                                    key={item.name}
+                                >
+                                    Signup
+                                </Link>
+                            </>
+                        )}
+
                     </Hidden>
                     <Hidden smUp>
                         <IconButton onClick={() => setOpen(true)}>
@@ -91,19 +155,75 @@ const Header = () => {
                 </div>
                 <Divider />
                 <List>
-                    {navigationLinks.map((item) => (
-                        <ListItem key={item.name}>
+                    {Auth.loggedIn() ? (
+                        <>
                             <Link
                                 className={styles.link}
                                 color="textPrimary"
                                 variant="button"
                                 underline="none"
-                                href={item.href}
+                                href="/me"
+                                key={item.name}
                             >
-                                {item.name}
+                                {Auth.getProfile().data.username}'s profile
                             </Link>
-                        </ListItem>
-                    ))}
+                            <Link
+                                className={styles.link}
+                                color="textPrimary"
+                                variant="button"
+                                underline="none"
+                                href="/search"
+                                key={item.name}
+                            >
+                                WikiSearch
+                            </Link>
+
+                            <Box my={2}>
+                                <Button
+                                    onClick={logout}
+                                    variant="outlined"
+                                    color="secondary"
+                                >
+                                    Logout
+                                </Button>
+                            </Box>
+                        </>
+                    ) : (
+                        <>
+                            <Link
+                                className={styles.link}
+                                color="textPrimary"
+                                variant="button"
+                                underline="none"
+                                href="/login"
+                                key={item.name}
+                            >
+                                Login
+                            </Link>
+
+                            <Link
+                                className={styles.link}
+                                color="textPrimary"
+                                variant="button"
+                                underline="none"
+                                href="/search"
+                                key={item.name}
+                            >
+                                WikiSearch
+                            </Link>
+                            <Link
+                                className={styles.link}
+                                color="textPrimary"
+                                variant="button"
+                                underline="none"
+                                href="/signup"
+                                key={item.name}
+                            >
+                                Signup
+                            </Link>
+                        </>
+                    )}
+
                 </List>
             </SwipeableDrawer>
         </AppBar>
