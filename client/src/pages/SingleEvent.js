@@ -44,7 +44,26 @@ const SingleEvent = () => {
   console.log("the eventText that will be populated as the description:++ " + event.eventText);
   console.log("the eventTitle that will be the conflict name:++ " + event.eventTitle);
   // const commentIdentifier = commentArray.map(comment) 
-  
+
+async function savingEvent (eventidentifier2) {
+  console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+  console.log("The savingEvent function has been called");
+  console.log("This is the event._id from the global: " + event._id);
+  console.log("This is the eventidentifier2 being passed into savingEvent: " + eventidentifier2);
+  try {
+    const response = await saveEvent({
+      variables: { eventId: eventidentifier2  }
+    });
+
+    if (!response) {
+      console.log("There is no data being saved to User");
+      throw new Error("there is no response");
+    }
+    } catch (err) {
+      console.error(err);
+    }
+
+}
  
 function intermediarTest (commentId) {
   console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -65,14 +84,7 @@ function intermediarTest (commentId) {
   //   { variables: { commentId: commentId, eventId: eventId } }
   // );
 
-  class Button extends React.Component {
 
-    handleId = (e) => {
-      console.log(e.target.id);
-      console.log(e.currentTarget.id);
-    }
-  
-  }
 
   async function onDelete(commentId, eventIdentifier) {
     console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -123,9 +135,9 @@ function intermediarTest (commentId) {
         
       </div>
       <div className="card-header bg-dark text-light p-2 m-0">
-      <button className="btn btn-primary btn-block py-3" type="submit" >
+      <button key={event._id} className="btn btn-primary btn-block py-3" type="submit" onClick={() => (savingEvent(event._id))} >
                                Save this event!
-                            </button> 
+      </button> 
       
       </div>
 

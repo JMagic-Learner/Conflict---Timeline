@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
-// import { QUERY_ME } from '../utils/queries';
+
 
 const EventList = ({
   events,
@@ -15,9 +15,12 @@ const EventList = ({
     return <h3>No events Yet</h3>;
   }
 
-  // const {loading, data } = useQuery(useParam? QUERY_ME, {
-  //   variables: {username: userParam}
-  // })
+  const consoleUpdate = (eventValue, eventTitleValue) =>{
+      console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+      console.log("We are now rendering into profile");
+      console.log("The eventTitle being rendered is " + eventTitleValue);
+      console.log("The event._id being rendered is " + eventValue);
+  }
 
   return (
     <div idName="app">
@@ -43,7 +46,9 @@ const EventList = ({
                       </Link>
                     ) : (
                       <>
-                        <p> This is a placeholder </p>
+                        {consoleUpdate(event._id, event.eventTitle)}
+                       
+                        {event.eventTitle}
                       </>
                     )}
                   </h4>

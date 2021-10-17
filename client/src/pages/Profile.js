@@ -46,7 +46,7 @@ const Profile = () => {
           <EventList
             events={user.events}
             title={`${user.username}'s events...`}
-            showTitle={false}
+            showTitle={true}
             showUsername={false}
           />
         </div>

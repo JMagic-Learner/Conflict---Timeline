@@ -6,7 +6,7 @@ const eventSchema = new Schema({
     type: String,
     // required: 'You need to leave a thought!',
     minlength: 1,
-    maxlength: 500,
+    maxlength: 1000,
     trim: true,
   },
   eventTitle: {
