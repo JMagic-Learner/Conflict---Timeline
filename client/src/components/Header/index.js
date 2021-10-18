@@ -206,7 +206,18 @@ const Header = () => {
                   >
                     WikiSearch
                   </Link>
-
+                  <Link
+                    className={styles.link}
+                    // onClick={logout}
+                    color="textPrimary"
+                    variant="button"
+                    underline="none"
+                    href="/"
+                  // key={item.name}
+                  >
+                    Logout
+                  </Link>
+{/* 
                   <Box my={2}>
                     <Button
                       onClick={logout}
@@ -215,7 +226,7 @@ const Header = () => {
                     >
                       Logout
                     </Button>
-                  </Box>
+                  </Box> */}
                 </>
               ) : (
                 <>
