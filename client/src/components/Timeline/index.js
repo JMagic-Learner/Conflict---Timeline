@@ -49,7 +49,7 @@ function TimeLine({ events,
                             <h5 className="vertical-timeline-element-subtitle">
                                 {/* {element.location} */}
                             </h5>
-                            <p id="description">{element.eventText}</p>
+                            <p style ={{ color: 'black'}} id="description">{element.eventText}</p>
                             <Link
                                 className="btn btn-primary btn-block btn-squared"
                                 to={`/events/${element._id}`}
