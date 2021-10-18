@@ -23,7 +23,7 @@ const EventList = ({
   }
 
   return (
-    <div idName="app">
+    <div idname="app">
       <div className="timeline-container">
 
         {showTitle && <h3>{title}</h3>}

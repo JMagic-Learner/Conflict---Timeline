@@ -4,7 +4,7 @@ import { Container, Grid, Box, Link } from '@material-ui/core'
 // import { useLocation, useHistory } from 'react-router-dom';
 // I'm rendering hte footer with 3 Columns and each one has 3 links, However not all the links wok for now
 const Footer = () => {
-  return <footer>
+  return(
     <Box
       px={{ xs: 3, sm: 10 }}
       py={{ xs: 5, sm: 10 }}
@@ -72,7 +72,6 @@ const Footer = () => {
         </Box>
       </Container>
     </Box>
-  </footer>
-};
+)};
 
 export default Footer;
