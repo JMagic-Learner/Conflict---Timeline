@@ -162,7 +162,7 @@ const Header = () => {
                 <MenuIcon />
               </IconButton>
             </Hidden>
-          </ToolBar>
+          </Toolbar>
         </Container>
         <SwipeableDrawer
           anchor="right"
