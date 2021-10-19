@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import { Toolbar } from '@material-ui/core';
+import Toolbar from "@material-ui/core/Toolbar";
 import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
@@ -69,7 +69,7 @@ const Header = () => {
       <AppBar position="sticky" color="default">
         {/* start of my nav bar */}
         <Container maxWidth="lg">
-          <ToolBar disableGutters >
+          <Toolbar disableGutters >
             <Hidden xsDown>
               <Link
                 className={styles.link}
