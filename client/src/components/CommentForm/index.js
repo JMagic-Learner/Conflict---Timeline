@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_COMMENT } from '../../utils/mutations';
 
+
 import Auth from '../../utils/auth';
 
 const CommentForm = ({ eventId }) => {
@@ -39,6 +40,23 @@ const CommentForm = ({ eventId }) => {
       setCharacterCount(value.length);
     }
   };
+  
+
+  // async function handleCommentChange (event)  {
+  //   try {
+  //     const data  = await editEventComment({
+  //       variables: {
+  //         eventId,
+  //         commentId,
+  //         commentText,
+  //       },
+  //     });
+  //     setCommentText('');
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+  
 
   return (
     <div>
@@ -75,6 +93,7 @@ const CommentForm = ({ eventId }) => {
               </button>
             </div>
           </form>
+          
         </>
       ) : (
         <p>

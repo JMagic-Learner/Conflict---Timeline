@@ -80,14 +80,34 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    // editEventComment: async (parent, { eventId, commentId, commentText }, context) => {
+    //   if (context.user) {
+    //     return Event.findOneAndUpdate(
+    //       { _id: eventId },
+    //       {
+    //         $addToSet: {
+    //           comments: { commentText, commentAuthor: context.user.username },
+    //         },
+    //       },
+    //       {
+    //         new: true,
+    //         runValidators: true,
+    //       }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
     editEventComment: async (parent, { eventId, commentId, commentText }, context) => {
       if (context.user) {
-        return Event.findOneAndUpdate(
-          { _id: eventId },
+        return Event.findByIdAndUpdate(
+          {_id: eventId, "comments._id": commentId },
           {
-            $addToSet: {
+            $set: {
               comments: { commentText, commentAuthor: context.user.username },
             },
+          //   "$set": {
+          //     "permissions.$.role": permission.role
+          // }
           },
           {
             new: true,

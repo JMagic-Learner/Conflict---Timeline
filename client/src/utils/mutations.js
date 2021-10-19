@@ -47,11 +47,10 @@ export const ADD_COMMENT = gql`
   }
 `;
 export const EDIT_COMMENT = gql`
-  mutation editEventComment($commentId: ID!, $commentText: String!) {
-    editEventComment(_id: $commentId, commentText: $commentText) {
+  mutation editEventComment($eventId: ID!,$commentId: ID!, $commentText: String!) {
+    editEventComment(eventId: $eventId, commentId: $commentId, commentText: $commentText) {
       _id
       commentText
-
     }
   }
 `
