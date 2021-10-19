@@ -9,6 +9,8 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Hidden from "@material-ui/core/Hidden";
 import Zoom from "@material-ui/core/Zoom";
+import Image from "../../assets/home.jpg"
+
 // Photo by < a href = "https://unsplash.com/@stijnswinnen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" > Stijn Swinnen</a > on < a href = "https://unsplash.com/s/photos/history?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" > Unsplash</a >
 
 // stijn - swinnen - qwe8TLRnG8k - unsplash.jpg
@@ -18,7 +20,7 @@ import Zoom from "@material-ui/core/Zoom";
 const useStyles = makeStyles((theme) => ({
   section: {
     height: "90vh",
-    backgroundImage: "url(https://images.unsplash.com/photo-1574610758891-5b809b6e6e2e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1512&q=80)",
+    backgroundImage: `url(${Image})`,
     backgroundSize: "cover",
     position: "relative",
   },
