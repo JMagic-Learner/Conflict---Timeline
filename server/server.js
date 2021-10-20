@@ -9,6 +9,7 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+// Congigring dotenv to use my key for the NY times search form
 require('dotenv').config();
 
 const server = new ApolloServer({
