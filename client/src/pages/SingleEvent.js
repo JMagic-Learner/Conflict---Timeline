@@ -186,6 +186,41 @@ const SingleEvent = () => {
                 <button key={comment._id} className="btn btn-primary btn-block py-3" id={comment._id} type="submit" onClick={() => (intermediarTest(comment._id))} >
                   Delete Comment
                 </button>
+<<<<<<< Updated upstream
+=======
+
+
+                <form
+                  className="flex-row justify-center justify-space-between-md align-center"
+                  id={comment._id, comment.commentText}
+                  onSubmit={e => {
+                    e.preventDefault();
+                    editComment(comment._id, comment.commentText);
+                    }
+                  }
+                  // onSubmit={() => (editComment(comment._id, comment.commentText))}
+                  // onSubmit={test}
+                >
+                  <div className="col-12 col-lg-9">
+                    <textarea
+                      name="commentText"
+                      placeholder="EDIT YOUR COMMENT"
+                      value={commentText}
+                      // value={commentText}
+                      className="form-input w-100"
+                      style={{ lineHeight: '1.5', resize: 'vertical' }}
+                      onChange={handleChange}
+                      // onChange={handleChange}
+                    ></textarea>
+                  </div>
+
+                  <div className="col-12 col-lg-3">
+                    <button className="btn btn-primary btn-block py-3" type="submit">
+                      Edit Comment
+                    </button>
+                  </div>
+                </form>
+>>>>>>> Stashed changes
               </div>
             ))}
         </div>
