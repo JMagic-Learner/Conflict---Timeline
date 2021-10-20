@@ -15,6 +15,8 @@ import { SAVE_EVENT } from '../utils/mutations';
 const SingleEvent = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { eventId } = useParams();
+  const [commentText, setCommentText] = useState('');
+  const [characterCount, setCharacterCount] = useState(0);
   const [renderComment, commentState] = useState('false');
 
   const { loading, data } = useQuery(QUERY_SINGLE_EVENT, {
@@ -82,6 +84,15 @@ const SingleEvent = () => {
   // const onDelete = (commentId , eventIdentifier) => removeComment(
   //   { variables: { commentId: commentId, eventId: eventId } }
   // );
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === 'commentText' && value.length <= 280) {
+      setCommentText(value);
+      setCharacterCount(value.length);
+    }
+  };
 
 
 
