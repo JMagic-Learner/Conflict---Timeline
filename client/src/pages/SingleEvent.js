@@ -88,36 +88,38 @@ const SingleEvent = () => {
   //   { variables: { commentId: commentId, eventId: eventId } }
   // );
 
-function readValue( value1) {
-  event.preventDefault();
+function readValue() {
   console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
   console.log("readvalue has been called");
-  console.log("");
-  console.log(value1);
-  
 }
 
 
-async function editComment(event)  {
-  event.preventDefault();
+async function editComment(value1, value2)  {
+  
   console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
   console.log("editComment has been called");
-  const { id, value } = event.target;
   console.log('this is the (global) event_id ' + globalEventId);
-  console.log('this is the commentID ' + id);
-  console.log('This is the text of the comment' + JSON.stringify(value));
-  // try {
-  //   const response = await editEventComment({
-  //     variables: { eventId: globalEventId , commentId: id, commentText: value}
-  //   });
+  if (value1 ) {
+  console.log('this is the commentID ' + value1);
+  }
+  if (value2) {
+    console.log('this is the commentText' + value2);
+  }
+let modify = value2;
+// Value2 is supposed to be the value of the new 
+modify = "This is changing";
+   try {
+     const response = await editEventComment({
+       variables: { eventId: globalEventId , commentId: value1, commentText: modify}
+     });
 
-  //   if (!response) {
-  //     console.log("There is no data being saved to User");
-  //     throw new Error("there is no response");
-  //   }
-  // } catch (err) {
-  //   console.error(err);
-  // }
+     if (!response) {
+       console.log("There is no data being saved to User");
+       throw new Error("there is no response");
+   }
+   } catch (err) {
+     console.error(err);
+   }
 }
 
   async function onDelete(commentId, eventIdentifier) {
@@ -212,21 +214,23 @@ async function editComment(event)  {
 
                 <form
                   className="flex-row justify-center justify-space-between-md align-center"
-                  id={comment._id}
-                  value={comment.commentText}
-                  onSubmit={editComment}
+                  id={comment._id, comment.commentText}
+                  onSubmit={e => {e.preventDefault();
+                    editComment(comment._id, comment.commentText)
+                    }
+                  }
+                  // onSubmit={() => (editComment(comment._id, comment.commentText))}
                   // onSubmit={test}
                 >
                   <div className="col-12 col-lg-9">
-                  <p> The value of your comment id is {comment._id} </p>
                     <textarea
                       name="commentText"
-                      placeholder="edit your comment..."
+                      placeholder="EDIT YOUR COMMENT"
                       value={comment.commentText}
                       // value={commentText}
                       className="form-input w-100"
                       style={{ lineHeight: '1.5', resize: 'vertical' }}
-                      onChange={() =>(readValue(comment._id))}
+                      onChange={readValue}
                       // onChange={handleChange}
                     ></textarea>
                   </div>

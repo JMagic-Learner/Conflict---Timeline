@@ -17,6 +17,9 @@ const resolvers = {
     event: async (parent, { eventId }) => {
       return Event.findOne({ _id: eventId });
     },
+    // comment: async (parent, {eventId, commentId}) => {
+    //   return Event.findById({_id: eventId, comments._id: commentsId})
+    // },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('events');

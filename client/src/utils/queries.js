@@ -55,3 +55,16 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_SINGLE_COMMENT = gql`
+  query getSingleComment ( $eventId: ID!, $commentId: ID! ) {
+    event(eventId: $eventId) {
+      comments (commentId: $commentId) {
+        _id
+        commentText
+        commentAuthor
+        createdAt
+      }
+  }
+}
+`;

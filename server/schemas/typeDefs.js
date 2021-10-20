@@ -34,6 +34,7 @@ const typeDefs = gql`
     events(username: String): [Event]
     event(eventId: ID!): Event
     me: User
+    # comment(eventId:ID!): Event
   }
 
   type Mutation {

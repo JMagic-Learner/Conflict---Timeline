@@ -40,22 +40,7 @@ const CommentForm = ({ eventId }) => {
       setCharacterCount(value.length);
     }
   };
-  
 
-  // async function handleCommentChange (event)  {
-  //   try {
-  //     const data  = await editEventComment({
-  //       variables: {
-  //         eventId,
-  //         commentId,
-  //         commentText,
-  //       },
-  //     });
-  //     setCommentText('');
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
   
 
   return (
