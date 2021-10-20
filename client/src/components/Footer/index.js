@@ -1,7 +1,6 @@
+// Importing necessary elements from Material UI
 import React from 'react';
 import { Container, Grid, Box, Link } from '@material-ui/core'
-
-import { useLocation, useHistory } from 'react-router-dom';
 
 const Footer = () => {
   return (
