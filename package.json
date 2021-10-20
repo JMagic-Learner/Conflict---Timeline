@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "- The historian is an app that takes you back in time to shift across time periods and learn about their most significant events and conflicts that shaped our modern life. - This application will host and describe various conflicts that occured during the 20th. We hope to inform later generations of little-known wars. In addition, this application will allow user/survivor/veteran input to help \"narrate\" the timeline.",
   "main": "server/server.js",
-  "engines": {
-    "node": "16.x"
-  },
   "scripts": {
     "start": "node server/server.js",
     "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
@@ -20,12 +17,13 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "@babel/core": "^7.15.8",
-    "@emotion/react": "^11.5.0",
+    "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.3",
     "@mui/material": "^5.0.3",
     "@mui/styled-engine-sc": "^5.0.3",
+    "dotenv": "^10.0.0",
+    "moment": "^2.29.1",
     "react-bootstrap": "^1.6.4",
     "styled-components": "^5.3.1"
   },
