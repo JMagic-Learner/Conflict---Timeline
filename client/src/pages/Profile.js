@@ -1,5 +1,5 @@
 import React from 'react';
-import Toolbar from "@material-ui/core/ToolBar";
+import Toolbar from "@material-ui/core/Toolbar";
 // Building new components element to handle NY times API search form 
 import News from '../components/NewsForm/index'
 import { Redirect, useParams } from 'react-router-dom';
