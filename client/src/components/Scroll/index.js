@@ -1,8 +1,9 @@
+// Importing necessary elements from Material UI
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-
+// Importing styling elements from Material UI
 const useStyles = makeStyles((theme) => ({
     toTop: {
         zIndex: 2,
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         right: '5%',
     }
 }))
-
+// Building up the Scroll function
 const Scroll = ({
     showBelow
 }) => {
