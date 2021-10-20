@@ -17,9 +17,6 @@ const resolvers = {
     event: async (parent, { eventId }) => {
       return Event.findOne({ _id: eventId });
     },
-    // comment: async (parent, {eventId, commentId}) => {
-    //   return Event.findById({_id: eventId, comments._id: commentsId})
-    // },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('events');
@@ -83,34 +80,14 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    // editEventComment: async (parent, { eventId, commentId, commentText }, context) => {
-    //   if (context.user) {
-    //     return Event.findOneAndUpdate(
-    //       { _id: eventId },
-    //       {
-    //         $addToSet: {
-    //           comments: { commentText, commentAuthor: context.user.username },
-    //         },
-    //       },
-    //       {
-    //         new: true,
-    //         runValidators: true,
-    //       }
-    //     );
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
     editEventComment: async (parent, { eventId, commentId, commentText }, context) => {
       if (context.user) {
-        return Event.findByIdAndUpdate(
-          {_id: eventId, "comments._id": commentId },
+        return Event.findOneAndUpdate(
+          { _id: eventId },
           {
-            $set: {
+            $addToSet: {
               comments: { commentText, commentAuthor: context.user.username },
             },
-          //   "$set": {
-          //     "permissions.$.role": permission.role
-          // }
           },
           {
             new: true,

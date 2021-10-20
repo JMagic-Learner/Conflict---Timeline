@@ -34,7 +34,6 @@ const typeDefs = gql`
     events(username: String): [Event]
     event(eventId: ID!): Event
     me: User
-    # comment(eventId:ID!): Event
   }
 
   type Mutation {
@@ -42,7 +41,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     saveEvent(eventId: ID!): User
     addComment(eventId: ID!, commentText: String!): Event
-    editEventComment(eventId: ID!, commentId: ID!, commentText: String): Event
+    editEventComment(eventId: ID!, commentId: ID, commentText: String): Event
     # deleteEventComment(commentId: String): Event
 
     # removeEvent(eventId: ID!): Event
