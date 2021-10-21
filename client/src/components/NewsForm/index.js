@@ -61,7 +61,7 @@ const News = () => {
 
                         return (
                             <article key={index} className="bg-white py-5 px-5 rounded-lg">
-                                <Card sx={{ minWidth: 275 }}>
+                                <Card xs={12} sm={8} md={5}>
                                     <CardContent>
                                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                             {original}, {moment(`${pub_date}`).format('Do MMM YYYY')}                                        </Typography>
@@ -74,8 +74,8 @@ const News = () => {
                                         <Typography variant="body2">
                                             {lead_paragraph}
                                         </Typography>
-                                
-                                <small className="block mt-4">Word Count: {word_count}</small>
+
+                                        <small className="block mt-4">Word Count: {word_count}</small>
                                     </CardContent>
                                     <CardActions>
                                         <Button href={web_url} size="small">Learn More</Button>
@@ -85,7 +85,7 @@ const News = () => {
                                 <br>
                                 </br>
                             </article>
-                          
+
                         )
                     })}
                 </section>

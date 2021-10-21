@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../components/CommentList/style.css';
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
