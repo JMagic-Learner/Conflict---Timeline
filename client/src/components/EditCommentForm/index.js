@@ -2,26 +2,24 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_COMMENT } from '../../utils/mutations';
-
+import { EDIT_COMMENT } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const CommentForm = ({ eventId }) => {
+const EditCommentForm = ({ eventId }) => {
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addComment, { error }] = useMutation(ADD_COMMENT);
+  const [editEventComment, { error }] = useMutation(EDIT_COMMENT);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const data  = await addComment({
+      const { data } = await editEventComment({
         variables: {
           eventId,
           commentText,
-          commentAuthor: Auth.getProfile().data.username,
         },
       });
 // Run Save events here
@@ -40,8 +38,6 @@ const CommentForm = ({ eventId }) => {
       setCharacterCount(value.length);
     }
   };
-
-  
 
   return (
     <div>
@@ -64,7 +60,7 @@ const CommentForm = ({ eventId }) => {
             <div className="col-12 col-lg-9">
               <textarea
                 name="commentText"
-                placeholder="add your comment..."
+                placeholder="Add your comment..."
                 value={commentText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
@@ -78,7 +74,6 @@ const CommentForm = ({ eventId }) => {
               </button>
             </div>
           </form>
-          
         </>
       ) : (
         <p>
@@ -90,4 +85,4 @@ const CommentForm = ({ eventId }) => {
   );
 };
 
-export default CommentForm;
+export default EditCommentForm;

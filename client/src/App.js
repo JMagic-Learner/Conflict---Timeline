@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SingleEvent from './pages/SingleEvent';
+// import CommentRender from './pages/CommentRender';
 import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';

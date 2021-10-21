@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
-import { QUERY_COMMENTS } from "../utils/mutations";
-import { QUERY_SINGLE_EVENT } from '../utils/queries';
+import { QUERY_COMMENTS } from "../../utils/queries";
+import { QUERY_SINGLE_EVENT } from '../../utils/queries';
 import { useQuery } from "@apollo/client";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -10,6 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles({
   spacing: {
@@ -17,8 +18,10 @@ const useStyles = makeStyles({
   },
 });
 
-const Comments = ({ commentText, id, onDelete, openModal }) => {
+const CommentBox = ({ commentText, id, onDelete, openModal }) => {
   const classes = useStyles();
+  const { eventId } = useParams();
+  
 
   const { loading, data } = useQuery(QUERY_SINGLE_EVENT, {
     // pass URL parameter
@@ -29,7 +32,7 @@ const Comments = ({ commentText, id, onDelete, openModal }) => {
   return (
     <Card className={classes.spacing}>
       <CardContent>
-        <Typography>{text}</Typography>
+        <Typography>{commentText}</Typography>
       </CardContent>
 
       <CardActions>
@@ -45,6 +48,7 @@ const Comments = ({ commentText, id, onDelete, openModal }) => {
 };
 
 const Comments = ({ onDelete, openModal }) => {
+ 
   const { loading, error, data } = useQuery(QUERY_COMMENTS);
   if (loading) {
     return "loading";
@@ -54,8 +58,8 @@ const Comments = ({ onDelete, openModal }) => {
   }
 
   return data.comments.map((comment) => (
-    <Comment openModal={openModal} onDelete={onDelete} {...blogPostData} key={blogPostData.id} />
+    <CommentBox openModal={openModal} onDelete={onDelete} {...comment} key={comment._id} />
   ));
 };
 
-export default BlogPosts;
+export default Comments;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
+import { QUERY_SINGLE_EVENT } from '../utils/queries';
 import { REMOVE_COMMENT } from '../utils/mutations';
 import { SAVE_EVENT } from '../utils/mutations';
-import { ADD_COMMENT } from '../utils/mutations';
 import { EDIT_COMMENT} from '../utils/mutations';
 import { QUERY_SINGLE_EVENT } from '../utils/queries';
 import Container from "@material-ui/core/Container";
@@ -14,8 +14,6 @@ import { useQuery } from '@apollo/client';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import { Grid } from "@material-ui/core";
-
 
 const SingleEvent = () => {
     const { eventId } = useParams();
@@ -35,7 +33,7 @@ const SingleEvent = () => {
       );
     
     const [saveEvent] = useMutation(SAVE_EVENT);
-    const [addComment] = useMutation(ADD_COMMENT);
+    const [editComment] = useMutation(EDIT_COMMENT);
     
     const event = data?.event || {};
   const commentArray = event.comments;
@@ -51,6 +49,14 @@ const SingleEvent = () => {
     e.preventDefault();
     addComment({ variables: { commentText: e.target.commentText.value } });
   };
+
+  const [removeComment] = useMutation(REMOVE_COMMENT
+    , {
+      onCompleted: (data) => {
+        window.location.reload();
+      },
+    }
+  );
 
   const onDelete = (id) => removeComment({ variables: { id } });
 
@@ -71,28 +77,26 @@ const SingleEvent = () => {
   return (
     <Container maxWidth="xs">
        <Grid item xs={8}> 
-      <Box>
+      <Head>
       <Typography component="h3" variant="h3">
       {event.eventTitle}
       {event.createdAt}
     </Typography>
-      </Box>
+      </Head>
       
-      <Box my={3} px={5}>
+      <Item><Box my={3} px={5}>
           <Typography align="center" component="h5" variant="h5">
           {event.eventText}
           </Typography>
 
-        </Box>
+        </Box></Item>
       
 
       <EditModal isOpen={!!editId} onClose={onClose} onSubmit={onSaveEdit} />
       <CommentForm onSubmit={onSubmit} />
-      {/* <Comments onDelete={onDelete} openModal={openModal} /> */}
+      <Comments onDelete={onDelete} openModal={openModal} />
       </Grid>
     </Container>
 
   );
 }
-
-export default SingleEvent;

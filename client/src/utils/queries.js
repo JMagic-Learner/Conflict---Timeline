@@ -55,3 +55,14 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_COMMENTS = gql`
+  query getComments {
+    comments {
+      _id
+      commentText
+      commentAuthor
+      createdAt
+    }
+  }
+`;
