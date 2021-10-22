@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
-import '../components/CommentList/style.css';
+// import '../components/CommentList/style.css';
+import Toolbar from "@material-ui/core/Toolbar";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
+import Typography from "@material-ui/core/Typography";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+} from "@material-ui/core";
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -112,80 +122,79 @@ const SingleEvent = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="my-3">
-      <h3 className="card-header bg-dark text-light p-2 m-0">
-        {event.eventTitle} <br />
-        <span style={{ fontSize: '1rem' }}>
-          had this event on {event.createdAt}
-        </span>
-      </h3>
-      <div className="bg-light py-4">
-        <blockquote
-          className="p-4"
-          style={{
-            fontSize: '1.5rem',
-            fontStyle: 'italic',
-            border: '2px dotted #1a1a1a',
-            lineHeight: '1.5',
-          }}
-        >
-          {event.eventText}
+    <Toolbar disableGutters>
+      <Grid container margin="auto" spacing={2} columns={16}>
+        <Grid item xs={16}>
+          <Box backgroundColor="default" my={2}>
+            <Typography align="center" component="h3" variant="h3">
+              {event.eventTitle}
+            </Typography>
+          </Box>
+          <Box my={2}>
+            <Typography variant="body1" gutterBottom>
+              {event.eventText}
+            </Typography>
+          </Box>
 
-        </blockquote>
+          <Box my={2}>
+            <Button
+              type="submit"
+              color="default"
+              size="medium"
+              key={event._id}
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={() => (savingEvent(event._id))}
+            >
+              Save This Event
+            </Button>
+          </Box>
 
-      </div>
-      <div className="card-header bg-dark text-light p-2 m-0">
-        <button key={event._id} className="btn btn-primary btn-block py-3" type="submit" onClick={() => (savingEvent(event._id))} >
-          Save this event!
-        </button>
-
-      </div>
-
-      <div className="my-5">
-        {/* <CommentList 
-        comments= {event.comments}
-        eventId={event._id}
-        /> */}
-
-        <h3
-          className="p-5 display-inline-block"
-          style={{ borderBottom: '1px dotted #1a1a1a' }}
-        >
-          Comments
-        </h3>
-        <div className="flex-row my-4">
+        </Grid>
+        <Grid item xs={16}>
+          <Typography align="left" component="h3" variant="h3">
+            Comments
+          </Typography>
+          <br>
+          </br>
           {commentArray &&
             commentArray.map((comment) => (
-              <div key={comment._id} className="col-12 mb-3 pb-3">
-                <div className="p-3 bg-dark text-light">
-                  <p className="card-header">
-                    Comment ID:{' '} {comment._id}
-                  </p>
-                  <h5 className="card-header">
+              <Card key={comment._id}>
+                <CardContent >
+                  <Typography variant="body1" gutterBottom>
+                  </Typography>
+                  <Typography variant="h5" component="h2">
                     {comment.commentAuthor} commented{' '}
-                    <span style={{ fontSize: '0.825rem' }}>
-                      on {comment.createdAt}
-                    </span>
-                  </h5>
-                  <p className="card-body">{comment.commentText}</p>
+                    on {comment.createdAt}
+                  </Typography>
+                  <Typography variant="body1" gutterBottom>
+                    {comment.commentText}
+                  </Typography>
+                </CardContent>
 
-                </div>
-                <button className="btn btn-primary btn-block py-3" type="submit" >
-                  Edit Comment
-                </button>
-                <button key={comment._id} className="btn btn-primary btn-block py-3" id={comment._id} type="submit" onClick={() => (intermediarTest(comment._id))} >
-                  Delete Comment
-                </button>
-              </div>
+                <CardActions>
+                  <Button variant="text" style={{ color: "#90caf9", fontWeight: 700 }}>
+                    Edit Comment
+                  </Button>
+                  <Button variant="text"
+                    style={{ color: "#90caf9", fontWeight: 700 }}
+                    key={comment._id}
+                    id={comment._id} type="submit"
+                    onClick={() => (intermediarTest(comment._id))}
+                  >
+                    Delete Comment
+                  </Button>
+                </CardActions>
+              </Card>
             ))}
-        </div>
+        </Grid>
 
-      </div>
-      <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <CommentForm eventId={event._id} />
-      </div>
-    </div>
+
+      </Grid>
+    </Toolbar>
   );
 };
 
 export default SingleEvent;
+
