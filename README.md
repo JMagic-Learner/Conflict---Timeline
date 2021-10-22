@@ -18,7 +18,7 @@ Fully functioning Historical events search engine built using MERN stack with a 
   - [From developers](#from-developers)
 
 ## Installation
-- You can visit the deployed app here : [Book Search Engine]().
+- You can visit the deployed app here : [Historian](https://historian-timeline.herokuapp.com/).
 <!-- TODO: add the live Heroku link -->
 - If you want to run the app on your local server download it through Github.
 - Run npm i or (npm install), to make sure to download all the necessary files in the jason package.
@@ -44,8 +44,12 @@ Fully functioning Historical events search engine built using MERN stack with a 
 4. create a pull request for our review
 <!-- TODO: add correct screenshot -->
 ### Screen Shots
-![](////)
-![](/////)
+![Main Page](./Screenshots/MainPage.png)
+![ProfilePage](./Screenshots/ProfilePage.png)
+![SignUppage](./Screenshots/SignUppage.png)
+![SingleEvent](./Screenshots/SingleEvent.png)
+![Timeline](./Screenshots/Timeline.png)
+![WikiSearch](./Screenshots/WikiSearch.png)
 
 ## Technologies
 - React
