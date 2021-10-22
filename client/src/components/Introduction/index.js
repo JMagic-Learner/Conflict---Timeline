@@ -60,26 +60,30 @@ const Introduction = () => {
         >
           <Zoom in={shouldShow}>
             <Grid item sm={8}>
-              <Typography component="h3" variant="h3">
-                This is where we will render the introduction to Historian
+              <Typography component="h5" variant="h5">
+                “History is not the past but a map of the past, drawn from a particular point of view, to be useful to the modern traveller.”
+                Henry Glassie, US Historian
               </Typography>
-              <Typography variant="h5">
-                This should only be rendered on the Home component
-              </Typography>
+              <Typography component="h4" variant="h4">
+                The Historian is an application that takes you back in time to shift across time periods and learn about their most significant events and conflicts that shaped our modern life.
+                This application will provide infromation on various conflicts that occured during the 20th, as we hope future genrations could learn from them.               
+                </Typography>
               <Box my={2}>
                 <Button
-                  href="mailto:address@email.com"
+                  href="mohamed.mesahel86@gmail.com"
                   variant="outlined"
                   color="secondary"
                 >
-                  Get in Touch!
+                  Get in Touch with Mohamed!
                 </Button>
+              </Box>
+              <Box my={2}>
                 <Button
-                  href="mailto:address@email.com"
+                  href="majason93@gmail.com"
                   variant="outlined"
                   color="secondary"
                 >
-                  Get in Touch!
+                  Get in Touch with Jason!
                 </Button>
               </Box>
             </Grid>
@@ -96,11 +100,3 @@ const Introduction = () => {
 
 export default Introduction;
 
-// return (
-//   <div>
-//     <p> This is where we will render the introduction to Historian</p>
-//     <p> This should only be rendered on the Home component</p>
-//   </div>
-{/* <Social direction="column" /> */ }
-
-// );
