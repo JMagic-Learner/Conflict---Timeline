@@ -18,11 +18,14 @@ Fully functioning Historical events search engine built using MERN stack with a 
   - [From developers](#from-developers)
 
 ## Installation
+- These are instructions for local deployment
 - You can visit the deployed app here : [Historian](https://historian-timeline.herokuapp.com/).
 <!-- TODO: add the live Heroku link -->
-- If you want to run the app on your local server download it through Github.
-- Run npm i or (npm install), to make sure to download all the necessary files in the jason package.
-- In your command shell run npm start.
+- Step 1.) Download the repository to your local desktop
+- Step 2.) In your terminal, run 'npm i' or 'npm install' to install all neccesary node packages
+- Step 3.) After successfully installing node packages, run 'npm run seed' to seed USER and EVENT models.
+- Step 4.) After successfully seeding local databases, run 'npm run dev' to start the application.
+
 
 ## User Story
 
@@ -69,6 +72,8 @@ Fully functioning Historical events search engine built using MERN stack with a 
 - Bootstrap
 - CSS
 - JWT
+- MongoDB Tools
+
 ## From developers
 Developers
 [Mohamed Mesahel](https://github.com/MohamedMesahel),
