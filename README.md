@@ -13,14 +13,13 @@ Fully functioning Historical events search engine built using MERN stack with a 
   - [Installation](#installation)
   - [User Story](#user-story)
   - [Usage](#usage)
-    - [Screen Shots](#screen-shots)
-  - [What's included](#whats-included)
+  - [Screen Shots](#screen-shots)
+ - [Technologies](#technologies)
   - [From developers](#from-developers)
 
 ## Installation
 - You can visit the deployed app here : [Book Search Engine]().
 <!-- TODO: add the live Heroku link -->
-
 - If you want to run the app on your local server download it through Github.
 - Run npm i or (npm install), to make sure to download all the necessary files in the jason package.
 - In your command shell run npm start.
@@ -48,9 +47,10 @@ Fully functioning Historical events search engine built using MERN stack with a 
 ![](////)
 ![](/////)
 
-## What's included
+## Technologies
 - React
-- Build in HTML5 validation
+- Material UI
+- Unspalsh API
 - Node.js
 - Express.js
 - Bcrypt
@@ -60,9 +60,13 @@ Fully functioning Historical events search engine built using MERN stack with a 
 - Javascript
 - MongoDB / Mongoose
 - Wikipedia API
+- NY Times Apllication
+- MomentJS
 
 
 ## From developers
-Made by [Jason Ma](https://github.com/JMagic-Learner),[Mohamed](https://github.com/MohamedMesahel)
+Developers
+[Mohamed Mesahel](https://github.com/MohamedMesahel),
+[Jason Ma](https://github.com/JMagic-Learner)
 
 We're always happy to receive your feedback!
