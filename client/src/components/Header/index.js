@@ -74,7 +74,7 @@ const Header = () => {
 
                 {Auth.loggedIn() ? (
                   <Grid item >
-                    <Link
+                    <Button
                       className={styles.link}
                       color="textPrimary"
                       variant="button"
@@ -83,8 +83,8 @@ const Header = () => {
                     // key={item.name}
                     >
                       {Auth.getProfile().data.username}'s profile
-                    </Link>
-                    <Link
+                    </Button>
+                    <Button
                       className={styles.link}
                       color="textPrimary"
                       variant="button"
@@ -93,8 +93,8 @@ const Header = () => {
                     // key={item.name}
                     >
                       WikiSearch
-                    </Link>
-                    <Link
+                    </Button>
+                    <Button
                       className={styles.link}
                       color="textPrimary"
                       variant="button"
@@ -103,11 +103,11 @@ const Header = () => {
                     // key={item.name}
                     >
                       Logout
-                    </Link>
+                    </Button>
                   </Grid>
                 ) : (
                   <Grid item >
-                    <Link
+                      <Button
                       className={styles.link}
                       color="textPrimary"
                       variant="button"
@@ -116,9 +116,9 @@ const Header = () => {
                     // key={item.name}
                     >
                       Login
-                    </Link>
+                      </Button>
 
-                    <Link
+                      <Button
                       className={styles.link}
                       color="textPrimary"
                       variant="button"
@@ -127,8 +127,8 @@ const Header = () => {
                     // key={item.name}
                     >
                       WikiSearch
-                    </Link>
-                    <Link
+                      </Button>
+                      <Button
                       className={styles.link}
                       color="textPrimary"
                       variant="button"
@@ -137,7 +137,7 @@ const Header = () => {
                     // key={item.name}
                     >
                       Signup
-                    </Link>
+                      </Button>
                   </Grid>
                 )}
               </Grid>
