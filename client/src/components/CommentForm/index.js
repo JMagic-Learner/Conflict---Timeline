@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-
+import TextField from "@material-ui/core/TextField";
+import Grid from "@mui/material/Grid";
+import Toolbar from "@material-ui/core/Toolbar";
+import Box from "@mui/material/Box";
+import Paper from '@mui/material/Paper';
+import Typography from "@material-ui/core/Typography";
+import { Button } from "@material-ui/core";
 import { ADD_COMMENT } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
 const CommentForm = ({ eventId }) => {
+
   const [commentText, setCommentText] = useState('');
-  const [characterCount, setCharacterCount] = useState(0);
 
   const [addComment, { error }] = useMutation(ADD_COMMENT);
 
@@ -23,8 +29,8 @@ const CommentForm = ({ eventId }) => {
           commentAuthor: Auth.getProfile().data.username,
         },
       });
-// Run Save events here
-// have a btn to save event on the home page 
+      // Run Save events here
+      // have a btn to save event on the home page 
       setCommentText('');
     } catch (err) {
       console.error(err);
@@ -34,56 +40,67 @@ const CommentForm = ({ eventId }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'commentText' && value.length <= 280) {
-      setCommentText(value);
-      setCharacterCount(value.length);
-    }
+    setCommentText(value);
+
   };
 
   return (
-    <div>
-      <h4>What are your experience on this event?</h4>
+    <Paper disableGutters>
 
-      {Auth.loggedIn() ? (
-        <>
-          <p
-            className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
-            }`}
-          >
-            Character Count: {characterCount}/280
-            {error && <span className="ml-2">{error.message}</span>}
-          </p>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="commentText"
-                placeholder="Add your comment..."
-                value={commentText}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+      <Toolbar >
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Comment
-              </button>
-            </div>
-          </form>
-        </>
-      ) : (
-        <p>
-          You need to be logged in to share your experience with us. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
-    </div>
+        <Grid container margin="auto" spacing={2} >
+          <Box disablegutters my={2} mx={10}>
+
+            <Typography component="h4" variant="h4">
+              Would you like to share your experience on this event?
+            </Typography>
+          </Box>
+
+
+          {Auth.loggedIn() ? (
+            <>
+              <Grid item xs={16}>
+                <form onSubmit={handleFormSubmit}>
+                  <TextField
+                    name="commentText"
+                    value={commentText}
+                    noValidate
+                    fullWidth
+                    variant="filled"
+                    color="primary"
+                    multiline
+                    rows={3}
+                    margin="normal"
+                    name="text"
+                    onChange={handleChange}
+                  >
+                  </TextField>
+
+                  <Button variant="contained" color="primary" type="submit">
+                    Add Comment
+                  </Button>
+
+                </form>
+              </Grid>
+              <br>
+              </br>
+            </>
+          ) : (
+            <Box disableGutters my={2}>
+              <Typography variant="h5" gutterBottom>
+                <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+              </Typography>
+            </Box>
+
+          )}
+        </Grid>
+
+      </Toolbar>
+    </Paper>
+
   );
 };
 
 export default CommentForm;
+
