@@ -70,7 +70,7 @@ const Introduction = () => {
                 </Typography>
               <Box my={2}>
                 <Button
-                  href="mohamed.mesahel86@gmail.com"
+                  href="mailto:mohamed.mesahel86@gmail.com"
                   variant="outlined"
                   color="secondary"
                 >
@@ -79,7 +79,7 @@ const Introduction = () => {
               </Box>
               <Box my={2}>
                 <Button
-                  href="majason93@gmail.com"
+                  href="mailto:majason93@gmail.com"
                   variant="outlined"
                   color="secondary"
                 >

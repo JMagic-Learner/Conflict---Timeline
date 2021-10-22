@@ -1,6 +1,6 @@
 # The Historian
 - The historian is an app that takes you back in time to shift across time periods and learn about their most significant events and conflicts that shaped our modern life.
-- This application will host and describe various conflicts that occured during the 20th. We hope to inform later generations of little-known wars. In addition, this application will allow Users to navigate through the timeline to learn about differents conflict events that happend in the last 50 years.
+- This application will host and describe various conflicts that occurred during the 20th. We hope to inform later generations of little-known wars. In addition, this application will allow Users to navigate through the timeline to learn about different conflict events that happend in the last 50 years.
 - The Apllication also provide WIKI search engine as well as NY times search engine that provide modern and archived atricales based on the user search.
 
 ## About
