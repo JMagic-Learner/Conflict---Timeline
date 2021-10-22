@@ -66,8 +66,9 @@ Fully functioning Historical events search engine built using MERN stack with a 
 - Wikipedia API
 - NY Times Apllication
 - MomentJS
-
-
+- Bootstrap
+- CSS
+- JWT
 ## From developers
 Developers
 [Mohamed Mesahel](https://github.com/MohamedMesahel),
