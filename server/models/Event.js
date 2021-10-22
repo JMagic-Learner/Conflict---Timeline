@@ -4,9 +4,6 @@ const dateFormat = require('../utils/dateFormat');
 const eventSchema = new Schema({
   eventText: {
     type: String,
-    // required: 'You need to leave a thought!',
-    minlength: 1,
-    maxlength: 1000,
     trim: true,
   },
   eventTitle: {
@@ -14,21 +11,12 @@ const eventSchema = new Schema({
     required: true,
     trim: true,
   },
-  // eventImage: {
-  //   type: String,
-  // },
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now,
-  //   get: (timestamp) => dateFormat(timestamp),
-  // },
+
   comments: [
     {
       commentText: {
         type: String,
         required: true,
-        minlength: 1,
-        maxlength: 500,
       },
       commentAuthor: {
         type: String,

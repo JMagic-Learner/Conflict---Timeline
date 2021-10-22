@@ -74,13 +74,3 @@ function TimeLine({ events,
 }
 
 export default TimeLine;
-{/* <Link
-    className={styles.link}
-    color="textPrimary"
-    variant="button"
-    underline="none"
-    href="/me"
-// key={item.name}
->
-    {Auth.getProfile().data.username}'s profile
-</Link> */}

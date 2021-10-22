@@ -48,8 +48,7 @@ const resolvers = {
 
       return { token, user };
     },
-    //{"authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiSGlzdG9yaWFuQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiSGlzdG9yaWFuIiwiX2lkIjoiNjE2MzhhZDM3OGM4NDczYzgwNWE4OWU4In0sImlhdCI6MTYzNDAxNDcxNCwiZXhwIjoxNjM0MDIxOTE0fQ.3jWn6OU47-jD0Yhccc6T9NzfRKDMNiO8KGC9DXQ9hyY"}
-    // {"email": "Historian@gmail.com", "password": "Historian123", "eventId": "61638a5ab67461588c209597" }
+
    saveEvent: async (parent, { eventId,  }, context) => {
       if (context.user) {
          const updatedUser = await User.findOneAndUpdate(
@@ -97,7 +96,32 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    // deleteEventComment: async (parent, { commentId }, context) => {
+    
+    removeComment: async (parent, { eventId, commentId }, context) => {
+      if (context.user) {
+        return Event.findOneAndUpdate(
+          { _id: eventId },
+          {
+            $pull: {
+              comments: {
+                _id: commentId,
+                // commentAuthor: context.user.username,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+  },
+};
+
+module.exports = resolvers;
+
+// This is for future development, editComment etc
+
+// deleteEventComment: async (parent, { commentId }, context) => {
     //   if (context.user) {
     //     return Event.findOneAndUpdate(
     //       { _id: commentId },
@@ -131,24 +155,3 @@ const resolvers = {
     //   }
     //   throw new AuthenticationError('You need to be logged in!');
     // },
-    removeComment: async (parent, { eventId, commentId }, context) => {
-      if (context.user) {
-        return Event.findOneAndUpdate(
-          { _id: eventId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                // commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-  },
-};
-
-module.exports = resolvers;

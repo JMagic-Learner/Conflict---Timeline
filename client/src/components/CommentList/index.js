@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 
 
-const CommentList = ({ comments = [] }, {eventId}) => {
+const CommentList = ({ comments = [] }, { eventId }) => {
   if (!comments.length) {
     return <h3>No Comments Yet</h3>;
   } else {
@@ -13,7 +13,7 @@ const CommentList = ({ comments = [] }, {eventId}) => {
     console.log(comments[0]._id);
   }
 
-  
+
 
 
   return (
@@ -37,12 +37,12 @@ const CommentList = ({ comments = [] }, {eventId}) => {
                 </h5>
                 <p className="card-body">{comment.commentText}</p>
               </div>
-               <button className="btn btn-primary btn-block py-3" type="submit" >
-                                Edit Comment
-                            </button>
-                            <button className="btn btn-primary btn-block py-3" type="submit"  >
-                                Delete Comment
-                            </button> 
+              <button className="btn btn-primary btn-block py-3" type="submit" >
+                Edit Comment
+              </button>
+              <button className="btn btn-primary btn-block py-3" type="submit"  >
+                Delete Comment
+              </button>
             </div>
           ))}
       </div>
