@@ -45,7 +45,7 @@ const typeDefs = gql`
     # deleteEventComment(commentId: String): Event
 
     # removeEvent(eventId: ID!): Event
-   removeComment(eventId: ID!, commentId: ID!): Event
+   removeComment(eventId: ID!, commentId: ID!): User
   }
 `;
 
